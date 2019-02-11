@@ -1,0 +1,96 @@
+[
+  {
+    "id": 201,
+    "authors": [
+      "Erik Dietrich",
+      "Amanda Muledy"
+    ],
+    "title": "Developer Hegemony: The Future of Labor",
+    "publicationYear": 2017,
+    "genres": [
+      "computers & technology",
+      "workplace",
+      "organizational behaviour"
+    ]
+  },
+  {
+    "id": 202,
+    "authors": [
+      "Jacko Willink"
+    ],
+    "title": "Extreme Ownership: How U.S. Navy SEALs Lead and Win",
+    "publicationYear": 2017,
+    "genres": [
+      "military",
+      "history",
+      "leaders & notable people"
+    ]
+  },
+  {
+    "id": 203,
+    "authors": [
+      "Gene Kim",
+      "Patrick Debois",
+      "Jez Humble",
+      "John Willis"
+    ],
+    "title": "The DevOps Handbook",
+    "publicationYear": 2016,
+    "genres": [
+      "information management",
+      "management & leadership",
+      "computers & technology"
+    ]
+  },
+  {
+    "id": 204,
+    "authors": [
+      "Jez Humble",
+      "David Farley"
+    ],
+    "title": "Contiuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation",
+    "publicationYear": 2010,
+    "genres": [
+      "computers & technology",
+      "textbooks",
+      "computer science"
+    ]
+  },
+  {
+    "id": 205,
+    "authors": [
+      "Sam Newman"
+    ],
+    "title": "Building Microservices",
+    "publicationYear": 2015,
+    "genres": [
+      "computers & technology",
+      "textbooks",
+      "computer science"
+    ]
+  },
+  {
+    "id": 206,
+    "authors": [
+      "Charles Duhigg"
+    ],
+    "title": "The Power of Habit",
+    "publicationYear": 2012,
+    "genres": [
+      "workplace",
+      "organizational behaviour"
+    ]
+  },
+  {
+    "id": 207,
+    "authors": [
+      "Patrick M. Lencioni"
+    ],
+    "title": "The Five Dysfunctions of a Team",
+    "publicationYear": 2011,
+    "genres": [
+      "workplace",
+      "organizational behaviour"
+    ]
+  }
+]
