@@ -5,12 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sourceallies.demos.library.domain.Book;
 import com.sourceallies.demos.library.domain.Library;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.List;
 
 public class LibraryDataLoader {
+    private static final Logger LOG = Logger.getLogger(LibraryDataLoader.class);
+
     public List<Book> loadBooks(String libraryBasePath) {
         InputStream is =
                 IOUtils.class.getResourceAsStream("/com/sourceallies/demos/library/" + libraryBasePath + "/books.json");
@@ -19,7 +22,7 @@ public class LibraryDataLoader {
             ObjectMapper objectMapper = new ObjectMapper();
             List<Book> books = objectMapper.readValue(jsonTxt, new TypeReference<List<Book>>() {
             });
-            System.out.println(libraryBasePath + ": " + books);
+            LOG.debug(String.format("Loaded %d books for %s library", books.size(), libraryBasePath));
             return books;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -35,7 +38,7 @@ public class LibraryDataLoader {
             String jsonTxt = IOUtils.toString(is, Charset.defaultCharset());
             ObjectMapper objectMapper = new ObjectMapper();
             Library library = objectMapper.readValue(jsonTxt, Library.class);
-            System.out.println(libraryBasePath + ": " + library);
+            LOG.debug(String.format("Loaded %s library metadata", libraryBasePath));
             return library;
         } catch (Exception e) {
             throw new RuntimeException(e);
