@@ -1,5 +1,7 @@
 package com.sourceallies.demos.library.domain;
 
+import java.util.Objects;
+
 public class Author {
     private String name;
     private Long bookCount;
@@ -27,5 +29,18 @@ public class Author {
         sb.append(", bookCount=").append(bookCount);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return name.equals(author.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

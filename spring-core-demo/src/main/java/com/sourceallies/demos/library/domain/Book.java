@@ -1,13 +1,15 @@
 package com.sourceallies.demos.library.domain;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class Book {
     private long id;
     private String title;
     private long publicationYear;
-    private List<String> authors;
-    private List<String> genres;
+    private Set<String> authors;
+    private Set<String> genres;
 
     public long getId() {
         return id;
@@ -33,19 +35,19 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    public List<String> getAuthors() {
+    public Set<String> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(Set<String> authors) {
         this.authors = authors;
     }
 
-    public List<String> getGenres() {
+    public Set<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<String> genres) {
+    public void setGenres(Set<String> genres) {
         this.genres = genres;
     }
 
@@ -56,5 +58,20 @@ public class Book {
         sb.append(", title='").append(title).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publicationYear == book.publicationYear &&
+                title.equals(book.title) &&
+                authors.equals(book.authors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, publicationYear, authors);
     }
 }

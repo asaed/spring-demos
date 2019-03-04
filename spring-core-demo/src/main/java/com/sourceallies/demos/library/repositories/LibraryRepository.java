@@ -1,37 +1,16 @@
 package com.sourceallies.demos.library.repositories;
 
 import com.sourceallies.demos.library.domain.Library;
+import com.sourceallies.demos.library.repositories.single.AuthorRepositoryImpl;
+import com.sourceallies.demos.library.repositories.single.BookRepositoryImpl;
+import com.sourceallies.demos.library.repositories.single.GenreRepositoryImpl;
 
-public class LibraryRepository {
+public interface LibraryRepository {
+    Library getLibrary();
 
-    private final Library library;
-    private final BookRepository bookRepository;
-    private final AuthorRepository authorRepository;
-    private final GenreRepository genreRepository;
+    BookRepositoryImpl getBookRepository();
 
-    public LibraryRepository(Library library,
-                             BookRepository bookRepository,
-                             AuthorRepository authorRepository,
-                             GenreRepository genreRepository) {
-        this.library = library;
-        this.bookRepository = bookRepository;
-        this.authorRepository = authorRepository;
-        this.genreRepository = genreRepository;
-    }
+    AuthorRepositoryImpl getAuthorRepository();
 
-    public Library getLibrary() {
-        return library;
-    }
-
-    public BookRepository getBookRepository() {
-        return bookRepository;
-    }
-
-    public AuthorRepository getAuthorRepository() {
-        return authorRepository;
-    }
-
-    public GenreRepository getGenreRepository() {
-        return genreRepository;
-    }
+    GenreRepositoryImpl getGenreRepository();
 }
