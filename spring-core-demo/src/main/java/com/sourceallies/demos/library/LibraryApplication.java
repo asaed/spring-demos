@@ -39,31 +39,39 @@ public class LibraryApplication {
 
             LOG.info("Welcome to the Library Console App");
             LOG.info("=========================");
-            LOG.info(String.format("App has %d libraries", libraryRepositories.size()));
-            for (LibraryService libraryService : libraryRepositories){
-                String libraryName = libraryService.getLibrary().getName();
-                LOG.info((String.format("Library '%s' has %d Books available", libraryName, libraryService.getBookRepository().getAll().size())));
-                LOG.info((String.format("Library '%s' from %d Authors", libraryName, libraryService.getAuthorRepository().getAll().size())));
-                LOG.info((String.format("Library '%s' covering %d Genres", libraryName, libraryService.getGenreRepository().getAll().size())));
-                Author topAuthor = libraryService.getAuthorRepository().getAllByBookCountDescending().get(0);
-                LOG.info(String.format("Library '%s' top author: '%s'", libraryName, topAuthor));
-                Genre topGenre = libraryService.getGenreRepository().getAllByBookCountDescending().get(0);
-                LOG.info(String.format("Library '%s' top genre: '%s'", libraryName, topGenre));
-            }
+            printStatisticsForEachLibrary(libraryRepositories);
 
 
             LOG.info("=========================");
-            LOG.info("Aggregated info");
-            LOG.info((String.format("On aggregate we have %d Books available", aggregatingBookRepository.getAll().size())));
-            LOG.info((String.format("On aggregate from %d Authors", aggregatingAuthorRepository.getAll().size())));
-            LOG.info((String.format("On aggregate covering %d Genres", genreAggregationRepository.getAll().size())));
-            Author topAggregateAuthor = aggregatingAuthorRepository.getAllByBookCountDescending().get(0);
-            LOG.info(String.format("On aggregate top author: '%s'", topAggregateAuthor));
-            Genre topAggregateGenre = genreAggregationRepository.getAllByBookCountDescending().get(0);
-            LOG.info(String.format("On aggregate top genre: '%s'", topAggregateGenre));
+            printAggregatedStatisticsFromAllLibraries(aggregatingBookRepository, aggregatingAuthorRepository, genreAggregationRepository);
         } catch (Exception e) {
             LOG.error("Error encountered",  e);
             System.exit(1);
+        }
+    }
+
+    private static void printAggregatedStatisticsFromAllLibraries(AggregatingBookRepository aggregatingBookRepository, AggregatingAuthorRepository aggregatingAuthorRepository, AggregatingGenreRepository genreAggregationRepository) {
+        LOG.info("Aggregated info");
+        LOG.info((String.format("On aggregate we have %d Books available", aggregatingBookRepository.getAll().size())));
+        LOG.info((String.format("On aggregate from %d Authors", aggregatingAuthorRepository.getAll().size())));
+        LOG.info((String.format("On aggregate covering %d Genres", genreAggregationRepository.getAll().size())));
+        Author topAggregateAuthor = aggregatingAuthorRepository.getAllByBookCountDescending().get(0);
+        LOG.info(String.format("On aggregate top author: '%s'", topAggregateAuthor));
+        Genre topAggregateGenre = genreAggregationRepository.getAllByBookCountDescending().get(0);
+        LOG.info(String.format("On aggregate top genre: '%s'", topAggregateGenre));
+    }
+
+    private static void printStatisticsForEachLibrary(List<LibraryService> libraryRepositories) {
+        LOG.info(String.format("App has %d libraries", libraryRepositories.size()));
+        for (LibraryService libraryService : libraryRepositories){
+            String libraryName = libraryService.getLibrary().getName();
+            LOG.info((String.format("Library '%s' has %d Books available", libraryName, libraryService.getBookRepository().getAll().size())));
+            LOG.info((String.format("Library '%s' from %d Authors", libraryName, libraryService.getAuthorRepository().getAll().size())));
+            LOG.info((String.format("Library '%s' covering %d Genres", libraryName, libraryService.getGenreRepository().getAll().size())));
+            Author topAuthor = libraryService.getAuthorRepository().getAllByBookCountDescending().get(0);
+            LOG.info(String.format("Library '%s' top author: '%s'", libraryName, topAuthor));
+            Genre topGenre = libraryService.getGenreRepository().getAllByBookCountDescending().get(0);
+            LOG.info(String.format("Library '%s' top genre: '%s'", libraryName, topGenre));
         }
     }
 }
