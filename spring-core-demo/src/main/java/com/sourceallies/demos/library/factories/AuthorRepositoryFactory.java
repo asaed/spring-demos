@@ -1,23 +1,23 @@
 package com.sourceallies.demos.library.factories;
 
-import com.sourceallies.demos.library.repositories.aggregation.AuthorAggregationRepository;
-import com.sourceallies.demos.library.repositories.aggregation.BookAggregationRepository;
-import com.sourceallies.demos.library.repositories.single.AuthorRepositoryImpl;
-import com.sourceallies.demos.library.repositories.single.BookRepositoryImpl;
+import com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository;
+import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository;
+import com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository;
+import com.sourceallies.demos.library.repositories.simple.SimpleBookRepository;
 import org.apache.log4j.Logger;
 
 public class AuthorRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(AuthorRepositoryFactory.class);
 
-    public AuthorRepositoryImpl createAuthorRepositoryImpl(String libraryBasePath){
-        LOG.debug("constructing an AuthorRepositoryImpl");
-        BookRepositoryImpl bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
-        return new AuthorRepositoryImpl(bookRepository);
+    public SimpleAuthorRepository createAuthorRepositoryImpl(String libraryBasePath){
+        LOG.debug("constructing an SimpleAuthorRepository");
+        SimpleBookRepository bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
+        return new SimpleAuthorRepository(bookRepository);
     }
 
-    public AuthorAggregationRepository createAuthorAggregationRepository(BookAggregationRepository bookAggregationRepository) {
-        LOG.debug("constructing a AuthorAggregationRepository");
-        return new AuthorAggregationRepository(bookAggregationRepository);
+    public AggregatingAuthorRepository createAuthorAggregationRepository(AggregatingBookRepository aggregatingBookRepository) {
+        LOG.debug("constructing a AggregatingAuthorRepository");
+        return new AggregatingAuthorRepository(aggregatingBookRepository);
     }
 }

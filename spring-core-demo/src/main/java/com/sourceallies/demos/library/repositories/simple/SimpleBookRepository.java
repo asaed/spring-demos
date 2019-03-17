@@ -1,15 +1,15 @@
-package com.sourceallies.demos.library.repositories.single;
+package com.sourceallies.demos.library.repositories.simple;
 
 import com.sourceallies.demos.library.domain.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRepositoryImpl implements com.sourceallies.demos.library.repositories.BookRepository {
+public class SimpleBookRepository implements com.sourceallies.demos.library.repositories.BookRepository {
 
     private final List<Book> books;
 
-    public BookRepositoryImpl(List<Book> books) {
+    public SimpleBookRepository(List<Book> books) {
         this.books = books;
     }
 

@@ -1,23 +1,24 @@
-package com.sourceallies.demos.library.repositories.aggregation;
+package com.sourceallies.demos.library.repositories.simple;
 
 import com.sourceallies.demos.library.domain.Genre;
-import com.sourceallies.demos.library.repositories.GenreRepository;
+import com.sourceallies.demos.library.repositories.BookRepository;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class GenreAggregationRepository implements GenreRepository {
-    private final BookAggregationRepository bookAggregationRepository;
+public class SimpleGenreRepository implements com.sourceallies.demos.library.repositories.GenreRepository {
 
-    public GenreAggregationRepository(BookAggregationRepository bookAggregationRepository) {
-        this.bookAggregationRepository = bookAggregationRepository;
+    private BookRepository bookRepository;
+
+    public SimpleGenreRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Override
     public List<Genre> getAll() {
-        List<Genre> genres = this.bookAggregationRepository.getAll()
+        List<Genre> genres = this.bookRepository.getAll()
                 .stream()
                 .map(book -> book.getGenres())
                 .flatMap(genreNames -> genreNames.stream())
@@ -33,7 +34,7 @@ public class GenreAggregationRepository implements GenreRepository {
 
     @Override
     public List<Genre> getAllByBookCountDescending() {
-        return this.bookAggregationRepository.getAll()
+        return this.bookRepository.getAll()
                 .stream()
                 .map(book -> book.getGenres())
                 .flatMap(genreNames -> genreNames.stream())

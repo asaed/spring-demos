@@ -1,24 +1,24 @@
-package com.sourceallies.demos.library.repositories.aggregation;
+package com.sourceallies.demos.library.repositories.simple;
 
 import com.sourceallies.demos.library.domain.Author;
-import com.sourceallies.demos.library.repositories.AuthorRepository;
+import com.sourceallies.demos.library.repositories.BookRepository;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class AuthorAggregationRepository implements AuthorRepository {
+public class SimpleAuthorRepository implements com.sourceallies.demos.library.repositories.AuthorRepository {
 
-    private final BookAggregationRepository bookAggregationRepository;
+    private BookRepository bookRepository;
 
-    public AuthorAggregationRepository(BookAggregationRepository bookAggregationRepository) {
-        this.bookAggregationRepository = bookAggregationRepository;
+    public SimpleAuthorRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Override
     public List<Author> getAll() {
-        List<Author> authors = this.bookAggregationRepository.getAll()
+        List<Author> authors = this.bookRepository.getAll()
                 .stream()
                 .map(book -> book.getAuthors())
                 .flatMap(authorNames -> authorNames.stream())
@@ -34,7 +34,7 @@ public class AuthorAggregationRepository implements AuthorRepository {
 
     @Override
     public List<Author> getAllByBookCountDescending() {
-        List<Author> authors = this.bookAggregationRepository.getAll()
+        List<Author> authors = this.bookRepository.getAll()
                 .stream()
                 .map(book -> book.getAuthors())
                 .flatMap(authorNames -> authorNames.stream())
@@ -50,5 +50,6 @@ public class AuthorAggregationRepository implements AuthorRepository {
                 .sorted(Comparator.comparingLong(Author::getBookCount).reversed())
                 .collect(Collectors.toList());
         return authors;
+
     }
 }
