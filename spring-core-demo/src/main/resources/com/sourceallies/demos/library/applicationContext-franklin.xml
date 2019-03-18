@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--franklin library -->
+    <bean id="franklinLibrary" class="com.sourceallies.demos.library.factories.LibraryRepositoryFactory" factory-method="createLibrary">
+        <constructor-arg name="libraryBasePath" value="franklin"/>
+    </bean>
+
+    <bean id="franklinBookRepository" class="com.sourceallies.demos.library.factories.BookRepositoryFactory" factory-method="createBookRepositoryImpl">
+        <constructor-arg name="libraryBasePath" value="franklin"/>
+    </bean>
+
+    <bean id="franklinAuthorRepository" class="com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository">
+        <constructor-arg name="bookRepository" ref="franklinBookRepository"/>
+    </bean>
+
+    <bean id="franklinGenreRepository" class="com.sourceallies.demos.library.repositories.simple.SimpleGenreRepository">
+        <constructor-arg name="bookRepository" ref="franklinBookRepository"/>
+    </bean>
+
+    <bean id="franklinLibraryService" class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService">
+        <constructor-arg name="library" ref="franklinLibrary"/>
+        <constructor-arg name="authorRepository" ref="franklinAuthorRepository"/>
+        <constructor-arg name="bookRepository" ref="franklinBookRepository"/>
+        <constructor-arg name="genreRepository" ref="franklinGenreRepository"/>
+    </bean>
+</beans>

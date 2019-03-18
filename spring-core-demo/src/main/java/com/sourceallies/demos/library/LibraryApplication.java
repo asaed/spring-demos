@@ -13,6 +13,8 @@ import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRe
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingGenreRepository;
 import com.sourceallies.demos.library.repositories.simple.SimpleBookRepository;
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,9 +27,15 @@ public class LibraryApplication {
         try {
             LOG.debug("=========================");
             LOG.debug("Initializing application");
-            LibraryService sauLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("sau");
-            LibraryService centralLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("central");
-            LibraryService franklinLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("franklin");
+            ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
+
+//            LibraryService sauLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("sau");
+//            LibraryService centralLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("central");
+//            LibraryService franklinLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("franklin");
+
+            LibraryService sauLibrary = context.getBean("sauLibraryService", LibraryService.class);
+            LibraryService centralLibrary = context.getBean("centralLibraryService", LibraryService.class);
+            LibraryService franklinLibrary = context.getBean("franklinLibraryService", LibraryService.class);
 
             List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary, franklinLibrary);
             List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
