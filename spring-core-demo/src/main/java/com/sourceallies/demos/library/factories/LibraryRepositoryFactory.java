@@ -14,10 +14,14 @@ public class LibraryRepositoryFactory {
 
     public SimpleLibraryService createLibraryRepositoryImpl(String libraryBasePath){
         LOG.debug("constructing a SimpleLibraryService");
-        Library library = (new LibraryDataLoader()).loadLibrary(libraryBasePath);
+        Library library = createLibrary(libraryBasePath);
         SimpleBookRepository bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
         SimpleAuthorRepository simpleAuthorRepository = (new AuthorRepositoryFactory()).createAuthorRepositoryImpl(libraryBasePath);
         SimpleGenreRepository genreRepository = (new GenreRepositoryFactory()).createGenreRepositoryImpl(libraryBasePath);
         return new SimpleLibraryService(library, bookRepository, simpleAuthorRepository, genreRepository);
+    }
+
+    public static Library createLibrary(String libraryBasePath) {
+        return (new LibraryDataLoader()).loadLibrary(libraryBasePath);
     }
 }

@@ -12,7 +12,7 @@ public class BookRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(BookRepositoryFactory.class);
 
-    public SimpleBookRepository createBookRepositoryImpl(String libraryBasePath){
+    public static SimpleBookRepository createBookRepositoryImpl(String libraryBasePath){
         LOG.debug("constructing a SimpleBookRepository");
         List<Book> books = (new LibraryDataLoader()).loadBooks(libraryBasePath);
         return new SimpleBookRepository(books);

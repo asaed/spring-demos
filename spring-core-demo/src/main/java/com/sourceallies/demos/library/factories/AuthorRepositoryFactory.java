@@ -10,7 +10,7 @@ public class AuthorRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(AuthorRepositoryFactory.class);
 
-    public SimpleAuthorRepository createAuthorRepositoryImpl(String libraryBasePath){
+    public static SimpleAuthorRepository createAuthorRepositoryImpl(String libraryBasePath){
         LOG.debug("constructing an SimpleAuthorRepository");
         SimpleBookRepository bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
         return new SimpleAuthorRepository(bookRepository);
