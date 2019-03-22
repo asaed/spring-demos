@@ -27,9 +27,8 @@ public class LibraryApplication {
             LOG.debug("Initializing application");
             LibraryService sauLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("sau");
             LibraryService centralLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("central");
-            LibraryService franklinLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("franklin");
 
-            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary, franklinLibrary);
+            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
             List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
 
             AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createBookAggregationRepository(bookRepositories);
