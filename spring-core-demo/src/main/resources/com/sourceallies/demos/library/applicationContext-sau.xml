@@ -17,14 +17,9 @@
         <constructor-arg name="bookRepository" ref="sauBookRepository"/>
     </bean>
 
-    <bean id="sauGenreRepository" class="com.sourceallies.demos.library.repositories.simple.SimpleGenreRepository">
-        <constructor-arg name="bookRepository" ref="sauBookRepository"/>
-    </bean>
-
     <bean id="sauLibraryService" class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService">
         <constructor-arg name="library" ref="sauLibrary"/>
         <constructor-arg name="authorRepository" ref="sauAuthorRepository"/>
         <constructor-arg name="bookRepository" ref="sauBookRepository"/>
-        <constructor-arg name="genreRepository" ref="sauGenreRepository"/>
     </bean>
 </beans>

@@ -17,14 +17,9 @@
         <constructor-arg name="bookRepository" ref="centralBookRepository"/>
     </bean>
 
-    <bean id="centralGenreRepository" class="com.sourceallies.demos.library.repositories.simple.SimpleGenreRepository">
-        <constructor-arg name="bookRepository" ref="centralBookRepository"/>
-    </bean>
-
     <bean id="centralLibraryService" class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService">
         <constructor-arg name="library" ref="centralLibrary"/>
         <constructor-arg name="authorRepository" ref="centralAuthorRepository"/>
         <constructor-arg name="bookRepository" ref="centralBookRepository"/>
-        <constructor-arg name="genreRepository" ref="centralGenreRepository"/>
     </bean>
 </beans>

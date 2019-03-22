@@ -8,16 +8,13 @@ public class SimpleLibraryService implements LibraryService {
     private final Library library;
     private final SimpleBookRepository bookRepository;
     private final SimpleAuthorRepository authorRepository;
-    private final SimpleGenreRepository genreRepository;
 
     public SimpleLibraryService(Library library,
                                 SimpleBookRepository bookRepository,
-                                SimpleAuthorRepository authorRepository,
-                                SimpleGenreRepository genreRepository) {
+                                SimpleAuthorRepository authorRepository) {
         this.library = library;
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
-        this.genreRepository = genreRepository;
     }
 
     @Override
@@ -33,10 +30,5 @@ public class SimpleLibraryService implements LibraryService {
     @Override
     public SimpleAuthorRepository getAuthorRepository() {
         return authorRepository;
-    }
-
-    @Override
-    public SimpleGenreRepository getGenreRepository() {
-        return genreRepository;
     }
 }
