@@ -31,13 +31,11 @@ public class LibraryApplication {
 
 //            LibraryService sauLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("sau");
 //            LibraryService centralLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("central");
-//            LibraryService franklinLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("franklin");
 
             LibraryService sauLibrary = context.getBean("sauLibraryService", LibraryService.class);
             LibraryService centralLibrary = context.getBean("centralLibraryService", LibraryService.class);
-            LibraryService franklinLibrary = context.getBean("franklinLibraryService", LibraryService.class);
 
-            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary, franklinLibrary);
+            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
             List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
 
             AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createBookAggregationRepository(bookRepositories);

@@ -6,6 +6,5 @@
 
     <import resource="./applicationContext-sau.xml"/>
     <import resource="./applicationContext-central.xml"/>
-    <import resource="./applicationContext-franklin.xml"/>
 
 </beans>
