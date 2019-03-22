@@ -77,3 +77,12 @@ public enum MembershipType {
 ```
 testing data https://github.com/asaed/poc-nancy-at-iadnug/tree/master/Poc.Nancy.Modules/Data/Repositories
 
+Running 
+
+```
+cd spring-core-demo 
+./mvnw clean install 
+
+./mvnw exec:java -Dexec.mainClass="com.sourceallies.demos.library.LibraryApplication"  
+
+```
