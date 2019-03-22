@@ -4,7 +4,6 @@ import com.sourceallies.demos.library.domain.Library;
 import com.sourceallies.demos.library.loader.LibraryDataLoader;
 import com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository;
 import com.sourceallies.demos.library.repositories.simple.SimpleBookRepository;
-import com.sourceallies.demos.library.repositories.simple.SimpleGenreRepository;
 import com.sourceallies.demos.library.repositories.simple.SimpleLibraryService;
 import org.apache.log4j.Logger;
 
@@ -17,8 +16,7 @@ public class LibraryRepositoryFactory {
         Library library = createLibrary(libraryBasePath);
         SimpleBookRepository bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
         SimpleAuthorRepository simpleAuthorRepository = (new AuthorRepositoryFactory()).createAuthorRepositoryImpl(libraryBasePath);
-        SimpleGenreRepository genreRepository = (new GenreRepositoryFactory()).createGenreRepositoryImpl(libraryBasePath);
-        return new SimpleLibraryService(library, bookRepository, simpleAuthorRepository, genreRepository);
+        return new SimpleLibraryService(library, bookRepository, simpleAuthorRepository);
     }
 
     public static Library createLibrary(String libraryBasePath) {
