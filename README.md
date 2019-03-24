@@ -26,58 +26,7 @@ Topics to cover:
     * Transaction mgmt 
 
 
-Domain to use: 
-
-init 
-```
- mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
-```
-
-```
-Libraries (3x Libraries: SAI Internal Library, Des Moines )
-Members
-
-public class Author {
-    private long id;
-    private String name;
-}
-
-public class Book {
-    private long id;
-    private String title;
-    private long authorId;
-    private long genreId;
-    private long publicationYear;
-}
-
-public class Genre {
-    private long id;
-    private String name;
-}
-
-public class Library {
-    private long id;
-    private String name;
-}
-
-public class Member {
-    private long id;
-    private String name;
-    private MembershipType membershipType;
-}
-
-public enum MembershipType {
-    BASIC, SUPER, VIP;
-}
-
-
-    support multiple libraries with different list of books
-    implement countBooksByGenre(), countBooksByAuthor(), etc. 
-    
-```
-testing data https://github.com/asaed/poc-nancy-at-iadnug/tree/master/Poc.Nancy.Modules/Data/Repositories
-
-Running 
+### Running 
 
 ```
 cd spring-core-demo 
