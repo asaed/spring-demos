@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="./applicationContext-sau.xml"/>
     <import resource="./applicationContext-central.xml"/>
+    <import resource="./applicationContext-sau.xml"/>
 
     <bean id="bookRepositories" class="org.springframework.beans.factory.config.ListFactoryBean">
         <property name="sourceList">

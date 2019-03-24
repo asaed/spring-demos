@@ -16,6 +16,7 @@ public class LibraryServiceFactory {
 //        return new SimpleLibraryService(library, bookRepository, simpleAuthorRepository);
 //    }
 
+    // This method can be deleted completely. We are keeping it just to show how we can use it with Spring
     public static Library createLibrary(String libraryBasePath){
         return (new LibraryDataLoader()).loadLibrary(libraryBasePath);
     }

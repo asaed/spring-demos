@@ -24,8 +24,6 @@ public class LibraryApplication {
 //            LibraryService centralLibrary = LibraryServiceFactory.createSimpleLibraryService("central");
 
             ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
-            LibraryService sauLibrary = context.getBean("sauLibraryService", LibraryService.class);
-            LibraryService centralLibrary = context.getBean("centralLibraryService", LibraryService.class);
 
 //            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
             ArrayList<LibraryService> libraryRepositories = new ArrayList<>(context.getBeansOfType(LibraryService.class).values());

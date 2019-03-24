@@ -11,6 +11,7 @@ public class BookRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(BookRepositoryFactory.class);
 
+    // This method can be deleted completely. We are keeping it just to show how we can use it with Spring
     public static SimpleBookRepository createSimpleBookRepository(String libraryBasePath){
         LOG.debug("constructing a SimpleBookRepository");
         List<Book> books = (new LibraryDataLoader()).loadBooks(libraryBasePath);
