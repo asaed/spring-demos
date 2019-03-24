@@ -2,6 +2,7 @@ package com.sourceallies.demos.library.repositories.simple;
 
 import com.sourceallies.demos.library.domain.Author;
 import com.sourceallies.demos.library.repositories.BookRepository;
+import org.apache.log4j.Logger;
 
 import java.util.Comparator;
 import java.util.List;
@@ -9,10 +10,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class SimpleAuthorRepository implements com.sourceallies.demos.library.repositories.AuthorRepository {
+    private static final Logger LOG = Logger.getLogger(SimpleAuthorRepository.class);
 
     private BookRepository bookRepository;
 
     public SimpleAuthorRepository(BookRepository bookRepository) {
+        LOG.debug("constructing new instance");
         this.bookRepository = bookRepository;
     }
 

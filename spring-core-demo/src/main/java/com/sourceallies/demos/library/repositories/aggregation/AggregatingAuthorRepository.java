@@ -2,6 +2,7 @@ package com.sourceallies.demos.library.repositories.aggregation;
 
 import com.sourceallies.demos.library.domain.Author;
 import com.sourceallies.demos.library.repositories.AuthorRepository;
+import org.apache.log4j.Logger;
 
 import java.util.Comparator;
 import java.util.List;
@@ -9,10 +10,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AggregatingAuthorRepository implements AuthorRepository {
+    private static final Logger LOG = Logger.getLogger(AggregatingAuthorRepository.class);
 
     private final AggregatingBookRepository aggregatingBookRepository;
 
     public AggregatingAuthorRepository(AggregatingBookRepository aggregatingBookRepository) {
+        LOG.debug("constructing new instance");
         this.aggregatingBookRepository = aggregatingBookRepository;
     }
 
