@@ -5,16 +5,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--sau library -->
-    <!--<bean id="sauLibrary" -->
-          <!--class="com.sourceallies.demos.library.factories.LibraryServiceFactory" -->
-          <!--factory-method="createLibrary"-->
-    <!--&gt;-->
-        <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
-    <!--</bean>-->
 
-    <bean id="libraryDataLoader"
-          class="com.sourceallies.demos.library.loader.LibraryDataLoader"
-    />
+    <!--<bean id="libraryDataLoader"-->
+          <!--class="com.sourceallies.demos.library.loader.LibraryDataLoader"-->
+    <!--/>-->
 
     <bean id="sauLibrary"
           factory-bean="libraryDataLoader"
@@ -22,13 +16,6 @@
     >
         <constructor-arg name="libraryBasePath" value="sau"/>
     </bean>
-
-    <!--<bean id="sauBookRepository"-->
-    <!--class="com.sourceallies.demos.library.factories.BookRepositoryFactory"-->
-    <!--factory-method="createSimpleBookRepository"-->
-    <!--&gt;-->
-    <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
-    <!--</bean>-->
 
     <bean id="sauBooks"
           factory-bean="libraryDataLoader"

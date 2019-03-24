@@ -6,13 +6,19 @@ import com.sourceallies.demos.library.domain.Book;
 import com.sourceallies.demos.library.domain.Library;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.List;
 
+@Component
 public class LibraryDataLoader {
     private static final Logger LOG = Logger.getLogger(LibraryDataLoader.class);
+
+    public LibraryDataLoader() {
+        LOG.debug("constructing new instance");
+    }
 
     public List<Book> loadBooks(String libraryBasePath) {
         InputStream is =

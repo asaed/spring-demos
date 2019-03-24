@@ -5,18 +5,29 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--central library -->
+
+    <!--<bean id="libraryDataLoader"-->
+          <!--class="com.sourceallies.demos.library.loader.LibraryDataLoader"-->
+    <!--/>-->
+
     <bean id="centralLibrary"
-          class="com.sourceallies.demos.library.factories.LibraryServiceFactory"
-          factory-method="createLibrary"
+          factory-bean="libraryDataLoader"
+          factory-method="loadLibrary"
+    >
+        <constructor-arg name="libraryBasePath" value="central"/>
+    </bean>
+
+    <bean id="centralBooks"
+          factory-bean="libraryDataLoader"
+          factory-method="loadBooks"
     >
         <constructor-arg name="libraryBasePath" value="central"/>
     </bean>
 
     <bean id="centralBookRepository"
-          class="com.sourceallies.demos.library.factories.BookRepositoryFactory"
-          factory-method="createSimpleBookRepository"
+          class="com.sourceallies.demos.library.repositories.simple.SimpleBookRepository"
     >
-        <constructor-arg name="libraryBasePath" value="central"/>
+        <constructor-arg name="books" ref="centralBooks"/>
     </bean>
 
     <bean id="centralAuthorRepository"

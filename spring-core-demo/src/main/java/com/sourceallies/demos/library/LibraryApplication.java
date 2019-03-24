@@ -20,19 +20,10 @@ public class LibraryApplication {
             LOG.debug("=========================");
             LOG.debug("Initializing application");
 
-//            LibraryService sauLibrary = LibraryServiceFactory.createSimpleLibraryService("sau");
-//            LibraryService centralLibrary = LibraryServiceFactory.createSimpleLibraryService("central");
-
             ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
 
-//            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
             ArrayList<LibraryService> libraryRepositories = new ArrayList<>(context.getBeansOfType(LibraryService.class).values());
 
-
-//            List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
-//            AggregatingBookRepository aggregatingBookRepository = BookRepositoryFactory.createAggregatingBookRepository(bookRepositories);
-//            AggregatingAuthorRepository aggregatingAuthorRepository = AuthorRepositoryFactory.createAggregatingAuthorRepository(aggregatingBookRepository);
-//
             AggregatingBookRepository aggregatingBookRepository = context.getBean("aggregatingBookRepository", AggregatingBookRepository.class);
             AggregatingAuthorRepository aggregatingAuthorRepository = context.getBean("aggregatingAuthorRepository", AggregatingAuthorRepository.class);
 
