@@ -7,4 +7,20 @@
     <import resource="./applicationContext-sau.xml"/>
     <import resource="./applicationContext-central.xml"/>
 
+    <bean id="bookRepositories" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <ref bean="sauBookRepository"/>
+                <ref bean="centralBookRepository"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="aggregatingBookRepository" class="com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository">
+        <constructor-arg name="bookRepositories" ref="bookRepositories"/>
+    </bean>
+
+    <bean id="aggregatingAuthorRepository" class="com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository">
+        <constructor-arg name="aggregatingBookRepository" ref="aggregatingBookRepository"/>
+    </bean>
 </beans>

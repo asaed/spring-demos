@@ -2,19 +2,15 @@ package com.sourceallies.demos.library;
 
 
 import com.sourceallies.demos.library.domain.Author;
-import com.sourceallies.demos.library.factories.AuthorRepositoryFactory;
-import com.sourceallies.demos.library.factories.BookRepositoryFactory;
 import com.sourceallies.demos.library.repositories.LibraryService;
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository;
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository;
-import com.sourceallies.demos.library.repositories.simple.SimpleBookRepository;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LibraryApplication {
     private static final Logger LOG = Logger.getLogger(LibraryApplication.class);
@@ -23,19 +19,25 @@ public class LibraryApplication {
         try {
             LOG.debug("=========================");
             LOG.debug("Initializing application");
-            ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
 
 //            LibraryService sauLibrary = (new LibraryRepositoryFactory()).createSimpleLibraryService("sau");
 //            LibraryService centralLibrary = (new LibraryRepositoryFactory()).createSimpleLibraryService("central");
 
+            ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
             LibraryService sauLibrary = context.getBean("sauLibraryService", LibraryService.class);
             LibraryService centralLibrary = context.getBean("centralLibraryService", LibraryService.class);
 
-            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
-            List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
+//            List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
+            ArrayList<LibraryService> libraryRepositories = new ArrayList<>(context.getBeansOfType(LibraryService.class).values());
 
-            AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createAggregatingBookRepository(bookRepositories);
-            AggregatingAuthorRepository aggregatingAuthorRepository = (new AuthorRepositoryFactory()).createAggregatingAuthorRepository(aggregatingBookRepository);
+
+//            List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
+//            AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createAggregatingBookRepository(bookRepositories);
+//            AggregatingAuthorRepository aggregatingAuthorRepository = (new AuthorRepositoryFactory()).createAggregatingAuthorRepository(aggregatingBookRepository);
+
+            AggregatingBookRepository aggregatingBookRepository = context.getBean("aggregatingBookRepository", AggregatingBookRepository.class);
+            AggregatingAuthorRepository aggregatingAuthorRepository = context.getBean("aggregatingAuthorRepository", AggregatingAuthorRepository.class);
+
             LOG.debug("Initializing finished");
 
             LOG.info("Welcome to the Library Console App");

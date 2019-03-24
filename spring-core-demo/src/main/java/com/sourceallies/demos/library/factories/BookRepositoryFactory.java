@@ -18,8 +18,8 @@ public class BookRepositoryFactory {
         return new SimpleBookRepository(books);
     }
 
-    public AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
-        LOG.debug("constructing a AggregatingBookRepository");
-        return new AggregatingBookRepository(bookRepositories);
-    }
+//    public AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
+//        LOG.debug("constructing a AggregatingBookRepository");
+//        return new AggregatingBookRepository(bookRepositories);
+//    }
 }
