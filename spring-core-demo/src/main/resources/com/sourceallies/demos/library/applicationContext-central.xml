@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--central library -->
-    <bean id="centralLibrary" class="com.sourceallies.demos.library.factories.LibraryRepositoryFactory" factory-method="createLibrary">
+    <bean id="centralLibrary" class="com.sourceallies.demos.library.factories.LibraryServiceFactory" factory-method="createLibrary">
         <constructor-arg name="libraryBasePath" value="central"/>
     </bean>
 

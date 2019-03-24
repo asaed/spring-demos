@@ -2,7 +2,6 @@ package com.sourceallies.demos.library.factories;
 
 import com.sourceallies.demos.library.domain.Book;
 import com.sourceallies.demos.library.loader.LibraryDataLoader;
-import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository;
 import com.sourceallies.demos.library.repositories.simple.SimpleBookRepository;
 import org.apache.log4j.Logger;
 
@@ -18,7 +17,7 @@ public class BookRepositoryFactory {
         return new SimpleBookRepository(books);
     }
 
-//    public AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
+//    public static AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
 //        LOG.debug("constructing a AggregatingBookRepository");
 //        return new AggregatingBookRepository(bookRepositories);
 //    }

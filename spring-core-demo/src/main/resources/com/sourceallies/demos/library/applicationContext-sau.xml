@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--sau library -->
-    <!--<bean id="sauLibrary" class="com.sourceallies.demos.library.factories.LibraryRepositoryFactory" factory-method="createLibrary">-->
+    <!--<bean id="sauLibrary" class="com.sourceallies.demos.library.factories.LibraryServiceFactory" factory-method="createLibrary">-->
         <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
     <!--</bean>-->
 

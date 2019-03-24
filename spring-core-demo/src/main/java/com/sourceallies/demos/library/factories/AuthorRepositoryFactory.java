@@ -1,7 +1,5 @@
 package com.sourceallies.demos.library.factories;
 
-import com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository;
-import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository;
 import org.apache.log4j.Logger;
 
 public class AuthorRepositoryFactory {
@@ -14,7 +12,7 @@ public class AuthorRepositoryFactory {
 //        return new SimpleAuthorRepository(bookRepository);
 //    }
 
-//    public AggregatingAuthorRepository createAggregatingAuthorRepository(AggregatingBookRepository aggregatingBookRepository) {
+//    public static AggregatingAuthorRepository createAggregatingAuthorRepository(AggregatingBookRepository aggregatingBookRepository) {
 //        LOG.debug("constructing a AggregatingAuthorRepository");
 //        return new AggregatingAuthorRepository(aggregatingBookRepository);
 //    }
