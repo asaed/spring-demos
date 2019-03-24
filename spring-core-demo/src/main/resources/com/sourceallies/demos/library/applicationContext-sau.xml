@@ -5,8 +5,11 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--sau library -->
-    <!--<bean id="sauLibrary" class="com.sourceallies.demos.library.factories.LibraryServiceFactory" factory-method="createLibrary">-->
-    <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
+    <!--<bean id="sauLibrary" -->
+          <!--class="com.sourceallies.demos.library.factories.LibraryServiceFactory" -->
+          <!--factory-method="createLibrary"-->
+    <!--&gt;-->
+        <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
     <!--</bean>-->
 
     <bean id="libraryDataLoader"
