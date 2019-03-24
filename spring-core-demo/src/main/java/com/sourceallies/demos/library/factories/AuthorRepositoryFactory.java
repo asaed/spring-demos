@@ -16,7 +16,7 @@ public class AuthorRepositoryFactory {
         return new SimpleAuthorRepository(bookRepository);
     }
 
-    public AggregatingAuthorRepository createAggregatingAuthorRepository(AggregatingBookRepository aggregatingBookRepository) {
+    public static AggregatingAuthorRepository createAggregatingAuthorRepository(AggregatingBookRepository aggregatingBookRepository) {
         LOG.debug("constructing a AggregatingAuthorRepository");
         return new AggregatingAuthorRepository(aggregatingBookRepository);
     }

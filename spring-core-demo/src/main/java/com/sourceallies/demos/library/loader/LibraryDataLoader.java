@@ -14,7 +14,7 @@ import java.util.List;
 public class LibraryDataLoader {
     private static final Logger LOG = Logger.getLogger(LibraryDataLoader.class);
 
-    public List<Book> loadBooks(String libraryBasePath) {
+    public static List<Book> loadBooks(String libraryBasePath) {
         InputStream is =
                 IOUtils.class.getResourceAsStream("/com/sourceallies/demos/library/" + libraryBasePath + "/books.json");
         try {
@@ -31,7 +31,7 @@ public class LibraryDataLoader {
         }
     }
 
-    public Library loadLibrary(String libraryBasePath) {
+    public static Library loadLibrary(String libraryBasePath) {
         InputStream is =
                 IOUtils.class.getResourceAsStream("/com/sourceallies/demos/library/" + libraryBasePath + "/library.json");
         try {

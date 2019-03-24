@@ -4,7 +4,7 @@ package com.sourceallies.demos.library;
 import com.sourceallies.demos.library.domain.Author;
 import com.sourceallies.demos.library.factories.AuthorRepositoryFactory;
 import com.sourceallies.demos.library.factories.BookRepositoryFactory;
-import com.sourceallies.demos.library.factories.LibraryRepositoryFactory;
+import com.sourceallies.demos.library.factories.LibraryServiceFactory;
 import com.sourceallies.demos.library.repositories.LibraryService;
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository;
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository;
@@ -22,14 +22,14 @@ public class LibraryApplication {
         try {
             LOG.debug("=========================");
             LOG.debug("Initializing application");
-            LibraryService sauLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("sau");
-            LibraryService centralLibrary = (new LibraryRepositoryFactory()).createLibraryRepositoryImpl("central");
+            LibraryService sauLibrary = LibraryServiceFactory.createSimpleLibraryService("sau");
+            LibraryService centralLibrary = LibraryServiceFactory.createSimpleLibraryService("central");
 
             List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
             List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
 
-            AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createAggregatingBookRepository(bookRepositories);
-            AggregatingAuthorRepository aggregatingAuthorRepository = (new AuthorRepositoryFactory()).createAggregatingAuthorRepository(aggregatingBookRepository);
+            AggregatingBookRepository aggregatingBookRepository = BookRepositoryFactory.createAggregatingBookRepository(bookRepositories);
+            AggregatingAuthorRepository aggregatingAuthorRepository = AuthorRepositoryFactory.createAggregatingAuthorRepository(aggregatingBookRepository);
             LOG.debug("Initializing finished");
 
             LOG.info("Welcome to the Library Console App");

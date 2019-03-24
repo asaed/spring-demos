@@ -14,11 +14,11 @@ public class BookRepositoryFactory {
 
     public static SimpleBookRepository createSimpleBookRepository(String libraryBasePath){
         LOG.debug("constructing a SimpleBookRepository");
-        List<Book> books = (new LibraryDataLoader()).loadBooks(libraryBasePath);
+        List<Book> books = LibraryDataLoader.loadBooks(libraryBasePath);
         return new SimpleBookRepository(books);
     }
 
-    public AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
+    public static AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
         LOG.debug("constructing a AggregatingBookRepository");
         return new AggregatingBookRepository(bookRepositories);
     }
