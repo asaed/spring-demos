@@ -6,32 +6,49 @@
 
     <!--sau library -->
     <!--<bean id="sauLibrary" class="com.sourceallies.demos.library.factories.LibraryServiceFactory" factory-method="createLibrary">-->
-        <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
+    <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
     <!--</bean>-->
 
-    <bean id="libraryDataLoader" class="com.sourceallies.demos.library.loader.LibraryDataLoader"/>
+    <bean id="libraryDataLoader"
+          class="com.sourceallies.demos.library.loader.LibraryDataLoader"
+    />
 
-    <bean id="sauLibrary" factory-bean="libraryDataLoader" factory-method="loadLibrary">
+    <bean id="sauLibrary"
+          factory-bean="libraryDataLoader"
+          factory-method="loadLibrary"
+    >
         <constructor-arg name="libraryBasePath" value="sau"/>
     </bean>
 
-    <!--<bean id="sauBookRepository" class="com.sourceallies.demos.library.factories.BookRepositoryFactory" factory-method="createSimpleBookRepository">-->
-        <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
+    <!--<bean id="sauBookRepository"-->
+    <!--class="com.sourceallies.demos.library.factories.BookRepositoryFactory"-->
+    <!--factory-method="createSimpleBookRepository"-->
+    <!--&gt;-->
+    <!--<constructor-arg name="libraryBasePath" value="sau"/>-->
     <!--</bean>-->
 
-    <bean id="sauBooks" factory-bean="libraryDataLoader" factory-method="loadBooks">
+    <bean id="sauBooks"
+          factory-bean="libraryDataLoader"
+          factory-method="loadBooks"
+    >
         <constructor-arg name="libraryBasePath" value="sau"/>
     </bean>
 
-    <bean id="sauBookRepository" class="com.sourceallies.demos.library.repositories.simple.SimpleBookRepository">
+    <bean id="sauBookRepository"
+          class="com.sourceallies.demos.library.repositories.simple.SimpleBookRepository"
+    >
         <constructor-arg name="books" ref="sauBooks"/>
     </bean>
 
-    <bean id="sauAuthorRepository" class="com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository">
+    <bean id="sauAuthorRepository"
+          class="com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository"
+    >
         <constructor-arg name="bookRepository" ref="sauBookRepository"/>
     </bean>
 
-    <bean id="sauLibraryService" class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService">
+    <bean id="sauLibraryService"
+          class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService"
+    >
         <constructor-arg name="library" ref="sauLibrary"/>
         <constructor-arg name="authorRepository" ref="sauAuthorRepository"/>
         <constructor-arg name="bookRepository" ref="sauBookRepository"/>
