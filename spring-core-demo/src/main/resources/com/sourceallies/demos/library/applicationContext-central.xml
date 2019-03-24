@@ -9,7 +9,7 @@
         <constructor-arg name="libraryBasePath" value="central"/>
     </bean>
 
-    <bean id="centralBookRepository" class="com.sourceallies.demos.library.factories.BookRepositoryFactory" factory-method="createBookRepositoryImpl">
+    <bean id="centralBookRepository" class="com.sourceallies.demos.library.factories.BookRepositoryFactory" factory-method="createSimpleBookRepository">
         <constructor-arg name="libraryBasePath" value="central"/>
     </bean>
 
