@@ -28,8 +28,8 @@ public class LibraryApplication {
             List<LibraryService> libraryRepositories = Arrays.asList(sauLibrary, centralLibrary);
             List<SimpleBookRepository> bookRepositories = libraryRepositories.stream().map(libraryService -> libraryService.getBookRepository()).collect(Collectors.toList());
 
-            AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createBookAggregationRepository(bookRepositories);
-            AggregatingAuthorRepository aggregatingAuthorRepository = (new AuthorRepositoryFactory()).createAuthorAggregationRepository(aggregatingBookRepository);
+            AggregatingBookRepository aggregatingBookRepository = (new BookRepositoryFactory()).createAggregatingBookRepository(bookRepositories);
+            AggregatingAuthorRepository aggregatingAuthorRepository = (new AuthorRepositoryFactory()).createAggregatingAuthorRepository(aggregatingBookRepository);
             LOG.debug("Initializing finished");
 
             LOG.info("Welcome to the Library Console App");

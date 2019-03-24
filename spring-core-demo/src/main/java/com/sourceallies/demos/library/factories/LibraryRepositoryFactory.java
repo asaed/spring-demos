@@ -11,11 +11,11 @@ public class LibraryRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(LibraryRepositoryFactory.class);
 
-    public SimpleLibraryService createLibraryRepositoryImpl(String libraryBasePath){
+    public SimpleLibraryService createSimpleLibraryService(String libraryBasePath){
         LOG.debug("constructing a SimpleLibraryService");
         Library library = createLibrary(libraryBasePath);
-        SimpleBookRepository bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
-        SimpleAuthorRepository simpleAuthorRepository = (new AuthorRepositoryFactory()).createAuthorRepositoryImpl(libraryBasePath);
+        SimpleBookRepository bookRepository = BookRepositoryFactory.createSimpleBookRepository(libraryBasePath);
+        SimpleAuthorRepository simpleAuthorRepository = AuthorRepositoryFactory.createSimpleAuthorRepository(libraryBasePath);
         return new SimpleLibraryService(library, bookRepository, simpleAuthorRepository);
     }
 

@@ -10,13 +10,13 @@ public class AuthorRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(AuthorRepositoryFactory.class);
 
-    public static SimpleAuthorRepository createAuthorRepositoryImpl(String libraryBasePath){
+    public static SimpleAuthorRepository createSimpleAuthorRepository(String libraryBasePath){
         LOG.debug("constructing an SimpleAuthorRepository");
-        SimpleBookRepository bookRepository = (new BookRepositoryFactory()).createBookRepositoryImpl(libraryBasePath);
+        SimpleBookRepository bookRepository = BookRepositoryFactory.createSimpleBookRepository(libraryBasePath);
         return new SimpleAuthorRepository(bookRepository);
     }
 
-    public AggregatingAuthorRepository createAuthorAggregationRepository(AggregatingBookRepository aggregatingBookRepository) {
+    public AggregatingAuthorRepository createAggregatingAuthorRepository(AggregatingBookRepository aggregatingBookRepository) {
         LOG.debug("constructing a AggregatingAuthorRepository");
         return new AggregatingAuthorRepository(aggregatingBookRepository);
     }

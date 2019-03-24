@@ -12,13 +12,13 @@ public class BookRepositoryFactory {
 
     private static final Logger LOG = Logger.getLogger(BookRepositoryFactory.class);
 
-    public static SimpleBookRepository createBookRepositoryImpl(String libraryBasePath){
+    public static SimpleBookRepository createSimpleBookRepository(String libraryBasePath){
         LOG.debug("constructing a SimpleBookRepository");
         List<Book> books = (new LibraryDataLoader()).loadBooks(libraryBasePath);
         return new SimpleBookRepository(books);
     }
 
-    public AggregatingBookRepository createBookAggregationRepository(List<SimpleBookRepository> bookRepositories) {
+    public AggregatingBookRepository createAggregatingBookRepository(List<SimpleBookRepository> bookRepositories) {
         LOG.debug("constructing a AggregatingBookRepository");
         return new AggregatingBookRepository(bookRepositories);
     }
