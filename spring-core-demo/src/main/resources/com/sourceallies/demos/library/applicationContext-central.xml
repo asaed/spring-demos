@@ -6,10 +6,6 @@
 
     <!--central library -->
 
-    <!--<bean id="libraryDataLoader"-->
-          <!--class="com.sourceallies.demos.library.loader.LibraryDataLoader"-->
-    <!--/>-->
-
     <bean id="centralLibrary"
           factory-bean="libraryDataLoader"
           factory-method="loadLibrary"

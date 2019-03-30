@@ -13,27 +13,4 @@
 
     <context:component-scan base-package="com.sourceallies.demos.library"/>
 
-    <!--<bean id="bookRepositories"-->
-          <!--class="org.springframework.beans.factory.config.ListFactoryBean"-->
-    <!--&gt;-->
-        <!--<property name="sourceList">-->
-            <!--<list>-->
-                <!--<ref bean="sauBookRepository"/>-->
-                <!--<ref bean="centralBookRepository"/>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <!--<bean id="aggregatingBookRepository"-->
-          <!--class="com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository"-->
-    <!--&gt;-->
-        <!--<constructor-arg name="bookRepositories" ref="bookRepositories"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="aggregatingAuthorRepository"-->
-          <!--class="com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository"-->
-    <!--&gt;-->
-        <!--<constructor-arg name="aggregatingBookRepository" ref="aggregatingBookRepository"/>-->
-    <!--</bean>-->
-
 </beans>
