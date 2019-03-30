@@ -1,13 +1,14 @@
 package com.sourceallies.demos.library;
 
-
+import com.sourceallies.demos.library.configuration.CentralLibraryConfiguration;
+import com.sourceallies.demos.library.configuration.LibraryApplicationConfiguration;
+import com.sourceallies.demos.library.configuration.SauLibraryConfiguration;
 import com.sourceallies.demos.library.domain.Author;
 import com.sourceallies.demos.library.repositories.LibraryService;
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingAuthorRepository;
 import com.sourceallies.demos.library.repositories.aggregation.AggregatingBookRepository;
 import org.apache.log4j.Logger;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,10 @@ public class LibraryApplication {
             LOG.debug("=========================");
             LOG.debug("Initializing application");
 
-            ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
+//            ApplicationContext context = new ClassPathXmlApplicationContext("/com/sourceallies/demos/library/applicationContext.xml");
+            AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                    LibraryApplicationConfiguration.class
+            );
 
             ArrayList<LibraryService> libraryRepositories = new ArrayList<>(context.getBeansOfType(LibraryService.class).values());
 
@@ -33,11 +37,10 @@ public class LibraryApplication {
             LOG.info("=========================");
             printStatisticsForEachLibrary(libraryRepositories);
 
-
             LOG.info("=========================");
             printAggregatedStatisticsFromAllLibraries(aggregatingBookRepository, aggregatingAuthorRepository);
         } catch (Exception e) {
-            LOG.error("Error encountered",  e);
+            LOG.error("Error encountered", e);
             System.exit(1);
         }
     }
@@ -52,7 +55,7 @@ public class LibraryApplication {
 
     private static void printStatisticsForEachLibrary(List<LibraryService> libraryRepositories) {
         LOG.info(String.format("App has %d libraries", libraryRepositories.size()));
-        for (LibraryService libraryService : libraryRepositories){
+        for (LibraryService libraryService : libraryRepositories) {
             String libraryName = libraryService.getLibrary().getName();
             LOG.info((String.format("Library '%s' has %d Books available", libraryName, libraryService.getBookRepository().getAll().size())));
             LOG.info((String.format("Library '%s' from %d Authors", libraryName, libraryService.getAuthorRepository().getAll().size())));

@@ -6,37 +6,37 @@
 
     <!--central library -->
 
-    <bean id="centralLibrary"
-          factory-bean="libraryDataLoader"
-          factory-method="loadLibrary"
-    >
-        <constructor-arg name="libraryBasePath" value="central"/>
-    </bean>
-
-    <bean id="centralBooks"
-          factory-bean="libraryDataLoader"
-          factory-method="loadBooks"
-    >
-        <constructor-arg name="libraryBasePath" value="central"/>
-    </bean>
-
-    <bean id="centralBookRepository"
-          class="com.sourceallies.demos.library.repositories.simple.SimpleBookRepository"
-    >
-        <constructor-arg name="books" ref="centralBooks"/>
-    </bean>
-
-    <bean id="centralAuthorRepository"
-          class="com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository"
-    >
-        <constructor-arg name="bookRepository" ref="centralBookRepository"/>
-    </bean>
-
-    <bean id="centralLibraryService"
-          class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService"
-    >
-        <constructor-arg name="library" ref="centralLibrary"/>
-        <constructor-arg name="authorRepository" ref="centralAuthorRepository"/>
-        <constructor-arg name="bookRepository" ref="centralBookRepository"/>
-    </bean>
+    <!--<bean id="centralLibrary"-->
+          <!--factory-bean="libraryDataLoader"-->
+          <!--factory-method="loadLibrary"-->
+    <!--&gt;-->
+        <!--<constructor-arg name="libraryBasePath" value="central"/>-->
+    <!--</bean>-->
+<!---->
+    <!--<bean id="centralBooks"-->
+          <!--factory-bean="libraryDataLoader"-->
+          <!--factory-method="loadBooks"-->
+    <!--&gt;-->
+        <!--<constructor-arg name="libraryBasePath" value="central"/>-->
+    <!--</bean>-->
+<!---->
+    <!--<bean id="centralBookRepository"-->
+          <!--class="com.sourceallies.demos.library.repositories.simple.SimpleBookRepository"-->
+    <!--&gt;-->
+        <!--<constructor-arg name="books" ref="centralBooks"/>-->
+    <!--</bean>-->
+<!---->
+    <!--<bean id="centralAuthorRepository"-->
+          <!--class="com.sourceallies.demos.library.repositories.simple.SimpleAuthorRepository"-->
+    <!--&gt;-->
+        <!--<constructor-arg name="bookRepository" ref="centralBookRepository"/>-->
+    <!--</bean>-->
+<!---->
+    <!--<bean id="centralLibraryService"-->
+          <!--class="com.sourceallies.demos.library.repositories.simple.SimpleLibraryService"-->
+    <!--&gt;-->
+        <!--<constructor-arg name="library" ref="centralLibrary"/>-->
+        <!--<constructor-arg name="authorRepository" ref="centralAuthorRepository"/>-->
+        <!--<constructor-arg name="bookRepository" ref="centralBookRepository"/>-->
+    <!--</bean>-->
 </beans>

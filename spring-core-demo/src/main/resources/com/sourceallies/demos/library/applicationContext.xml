@@ -8,9 +8,9 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <import resource="./applicationContext-central.xml"/>
-    <import resource="./applicationContext-sau.xml"/>
+    <!--<import resource="./applicationContext-central.xml"/>-->
+    <!--<import resource="./applicationContext-sau.xml"/>-->
 
-    <context:component-scan base-package="com.sourceallies.demos.library"/>
+    <!--<context:component-scan base-package="com.sourceallies.demos.library"/>-->
 
 </beans>
