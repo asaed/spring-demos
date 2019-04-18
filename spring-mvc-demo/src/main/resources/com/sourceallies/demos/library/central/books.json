@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "authors": [
+      "J.D. Salinger"
+    ],
+    "title": "THE CATCHER IN THE RYE",
+    "publicationYear": 1951,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 2,
+    "authors": [
+      "George Orwell"
+    ],
+    "title": "1984",
+    "publicationYear": 1949,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 3,
+    "authors": [
+      "George Orwell"
+    ],
+    "title": "ANIMAL FARM",
+    "publicationYear": 1945,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 4,
+    "authors": [
+      "Joseph Heller"
+    ],
+    "title": "CATCH-22",
+    "publicationYear": 1961,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 5,
+    "authors": [
+      "Henry James"
+    ],
+    "title": "THE WINGS OF THE DOVE",
+    "publicationYear": 1902,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 6,
+    "authors": [
+      "Henry James"
+    ],
+    "title": "THE AMBASSADORS",
+    "publicationYear": 1903,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 7,
+    "authors": [
+      "Henry James"
+    ],
+    "title": "THE GOLDEN BOWL",
+    "publicationYear": 1904,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 8,
+    "authors": [
+      "H.P. Lovecraft"
+    ],
+    "title": "AT THE MOUNTAINS OF MADNESS",
+    "publicationYear": 1936,
+    "genres": [
+      "fiction"
+    ]
+  },
+  {
+    "id": 9,
+    "authors": [
+      "Stephen King"
+    ],
+    "title": "IT",
+    "publicationYear": 1986,
+    "genres": [
+      "fiction",
+      "horror"
+    ]
+  },
+  {
+    "id": 10,
+    "authors": [
+      "Stephen King"
+    ],
+    "title": "THE STAND",
+    "publicationYear": 1978,
+    "genres": [
+      "fiction"
+    ]
+  }
+]
