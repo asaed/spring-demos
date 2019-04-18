@@ -28,10 +28,31 @@ Topics to cover:
 
 ### Running 
 
+#### spring-core-demo
 ```
 cd spring-core-demo 
 ./mvnw clean install 
 
 ./mvnw exec:java -Dexec.mainClass="com.sourceallies.demos.library.LibraryApplication"  
 
+```
+
+#### spring-mvc-demo
+```
+cd spring-mvc-demo 
+./mvnw clean install 
+
+./mvnw jetty:run  
+
+```
+
+# You want to start from scratch? 
+To start a console app from scratch
+```bash
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
+```
+
+To create a web application from scratch:
+```bash
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp
 ```
