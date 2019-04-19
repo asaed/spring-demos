@@ -2,6 +2,7 @@ package com.sourceallies.demos.library.controllers;
 
 import com.sourceallies.demos.library.domain.Library;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,11 +30,16 @@ public class LibraryController {
 
 
     @GetMapping("/{libraryId}")
-    public Library getLibrary(@PathVariable String libraryId){
+    public ResponseEntity getLibrary(@PathVariable String libraryId){
         Optional<Library> foundLibrary = libraries.stream()
                 .filter(library -> library.getId().equalsIgnoreCase(libraryId))
                 .findFirst();
-        return foundLibrary.get();
+
+        if (foundLibrary.isPresent()) {
+            return ResponseEntity.ok(foundLibrary.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
