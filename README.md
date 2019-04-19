@@ -1,79 +1,71 @@
-Topics to cover:
+spring-demos
+====
 
-* Spring Core (i.e. dependency injection)
-  * What's the problem?
-  	 * instantiating instances needed by the application.
-  	    * Traditionally solved with Factory pattern
-	  	* client shouldn't care what producer needs. Just do your job!
-	  	* figuring out the order of instantiation
-	  	* make testing easy 
-	  	* lazy loading vs eager loading of instances 
-  * How to use Spring?
-    * XML-only config
-    * xml + `@Component` + `@Autowired`
-        * `@Named` + `@Inject`
-    * java config
-  * How to test? 
-  	 * `@RunWith(SpringJUnit4ClassRunner.class)`
-  	 * `@ContextConfiguration`
-  	 * autowire ApplicationContext 
-  	 * `@Autowired` 
-* Spring MVC
-    * REST endpoints
-    * JSON serialization/de-serialization
-    * XML serialization/de-serialization (nice to have)
-* Spring with MyBatis 
-    * Transaction mgmt 
+This project is a step-by-step demo of how to use Spring. Each step is in its own git branch.
 
+### Spring Core (IoC Container)
+The git branches for using spring IOC container are (in chronological order):
+- demo-1-0-without-spring
+- demo-1-1-spring-xml
+- demo-1-2-spring-annotations
+- demo-1-3-spring-java-config
 
-Domain to use: 
+To use the any of those branches: 
+```bash 
+git checkout ${branchName}
 
-init 
-```
- mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
+cd spring-core-demo 
+
+./mvnw clean install 
+
+./mvnw exec:java -Dexec.mainClass="com.sourceallies.demos.library.LibraryApplication"  
+# The console application will run and print some output to the console 
 ```
 
+### Testing Spring IoC Container
+The git branches are: 
+- demo-2-1-spring-xml-with-tests
+- demo-2-2-spring-annotations-with-tests
+- demo-2-3-spring-java-config-with-tests
+
+To use the any of those branches: 
+```bash 
+git checkout ${branchName}
+
+cd spring-core-demo 
+
+./mvnw clean test 
+# Tests will run agains the spring IOC container 
 ```
-Libraries (3x Libraries: SAI Internal Library, Des Moines )
-Members
 
-public class Author {
-    private long id;
-    private String name;
-}
+### Spring MVC 
+The git branches are: 
+- demo-3-0-bare-java-web-app
+- demo-3-1-bare-spring-mvc
+- demo-3-2-mvc-request-mapping
+- demo-3-3-more-request-mapping
+- demo-3-4-handling-responses
 
-public class Book {
-    private long id;
-    private String title;
-    private long authorId;
-    private long genreId;
-    private long publicationYear;
-}
+To use the any of those branches: 
+```bash 
+git checkout ${branchName}
 
-public class Genre {
-    private long id;
-    private String name;
-}
+cd spring-mvc-demo 
 
-public class Library {
-    private long id;
-    private String name;
-}
+./mvnw clean install 
 
-public class Member {
-    private long id;
-    private String name;
-    private MembershipType membershipType;
-}
+./mvnw jetty:run
 
-public enum MembershipType {
-    BASIC, SUPER, VIP;
-}
-
-
-    support multiple libraries with different list of books
-    implement countBooksByGenre(), countBooksByAuthor(), etc. 
-    
+# Point your browser to http://localhost:8080/
 ```
-testing data https://github.com/asaed/poc-nancy-at-iadnug/tree/master/Poc.Nancy.Modules/Data/Repositories
 
+### You want to start from scratch?
+To start a console app from scratch
+```bash 
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
+```
+
+To create a web application from scratch:
+```bash
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp
+```
